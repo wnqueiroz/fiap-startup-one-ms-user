@@ -9,14 +9,14 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 
-import { CreatedUserDto } from './dto/created-user.dto';
-import { LoggedUserDto } from './dto/logged-user.dto';
-import { SingInUserDto } from './dto/signin-user.dto';
-import { SignUpUserDto } from './dto/signup-user.dto';
+import { UserDTO } from './dto/user.dto';
+import { LoggedUserDTO } from './dto/logged-user.dto';
+import { SingInUserDTO } from './dto/signin-user.dto';
+import { SingUpUserDTO } from './dto/signup-user.dto';
 
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { GetCurrentUser } from '../auth/auth.annotation';
-import { CurrentUserDto } from '../auth/dto/current-user.dto';
+import { CurrentUserDTO } from '../auth/dto/current-user.dto';
 
 import { UsersService } from './users.service';
 import { ApiTags } from '@nestjs/swagger';
@@ -28,19 +28,19 @@ export class UsersController {
 
   @UseGuards(JwtAuthGuard)
   @Get('me')
-  getProfile(@GetCurrentUser() user: CurrentUserDto): CurrentUserDto {
+  getProfile(@GetCurrentUser() user: CurrentUserDTO): CurrentUserDTO {
     return user;
   }
 
   @Post('signin')
   @HttpCode(200)
-  async signIn(@Body() signInUserDto: SingInUserDto): Promise<LoggedUserDto> {
-    return this.usersService.signIn(signInUserDto);
+  async signIn(@Body() signInUserDTO: SingInUserDTO): Promise<LoggedUserDTO> {
+    return this.usersService.signIn(signInUserDTO);
   }
 
   @Post('signup')
   @UseInterceptors(ClassSerializerInterceptor)
-  async signUp(@Body() signUpUserDto: SignUpUserDto): Promise<CreatedUserDto> {
-    return this.usersService.signUp(signUpUserDto);
+  async signUp(@Body() signUpUserDTO: SingUpUserDTO): Promise<UserDTO> {
+    return this.usersService.signUp(signUpUserDTO);
   }
 }

@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 
-export class SingInUserDto {
+export class SingInUserDTO {
   @IsNotEmpty({
     message: 'Informe o endereço de email',
   })

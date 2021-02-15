@@ -1,4 +1,4 @@
-export class JwtPayloadDto {
+export class JwtPayloadDTO {
   name: string;
   email: string;
   sub: string;

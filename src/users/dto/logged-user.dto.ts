@@ -1,3 +1,3 @@
-export class LoggedUserDto {
+export class LoggedUserDTO {
   access_token: string;
 }

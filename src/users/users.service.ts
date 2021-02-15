@@ -10,10 +10,10 @@ import { Repository } from 'typeorm';
 
 import * as bcrypt from 'bcrypt';
 
-import { CreatedUserDto } from './dto/created-user.dto';
-import { LoggedUserDto } from './dto/logged-user.dto';
-import { SingInUserDto } from './dto/signin-user.dto';
-import { SignUpUserDto } from './dto/signup-user.dto';
+import { UserDTO } from './dto/user.dto';
+import { LoggedUserDTO } from './dto/logged-user.dto';
+import { SingInUserDTO } from './dto/signin-user.dto';
+import { SingUpUserDTO } from './dto/signup-user.dto';
 
 import { UserEntity } from './user.entity';
 
@@ -28,8 +28,8 @@ export class UsersService {
     private authService: AuthService,
   ) {}
 
-  async signUp(signUpUserDto: SignUpUserDto): Promise<CreatedUserDto> {
-    const { name, password, passwordConfirmation, email } = signUpUserDto;
+  async signUp(signUpUserDTO: SingUpUserDTO): Promise<UserDTO> {
+    const { name, password, passwordConfirmation, email } = signUpUserDTO;
 
     const userExists = await this.findByEmail(email);
 
@@ -62,14 +62,14 @@ export class UsersService {
 
     const createdUser = await this.create(user);
 
-    return new CreatedUserDto({
+    return new UserDTO({
       ...createdUser,
       access_token: this.authService.generateAccessToken(user),
     });
   }
 
-  async signIn(signInUserDto: SingInUserDto): Promise<LoggedUserDto> {
-    const { email, password } = signInUserDto;
+  async signIn(signInUserDTO: SingInUserDTO): Promise<LoggedUserDTO> {
+    const { email, password } = signInUserDTO;
 
     const user = await this.findByEmail(email);
 
