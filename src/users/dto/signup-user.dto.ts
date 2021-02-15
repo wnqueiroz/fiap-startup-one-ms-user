@@ -1,6 +1,10 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 
 export class SingUpUserDTO {
+  @ApiProperty({
+    example: 'William Queiroz',
+  })
   @IsNotEmpty({
     message: 'Informe o nome do usuário',
   })
@@ -15,6 +19,9 @@ export class SingUpUserDTO {
       message: 'Informe um endereço de email válido',
     },
   )
+  @ApiProperty({
+    example: 'lorem@ipsum.com',
+  })
   email: string;
 
   @IsNotEmpty({
@@ -23,6 +30,9 @@ export class SingUpUserDTO {
   @MinLength(6, {
     message: 'A senha deve ter no mínimo 6 caracteres',
   })
+  @ApiProperty({
+    example: '123456',
+  })
   password: string;
 
   @IsNotEmpty({
@@ -30,6 +40,9 @@ export class SingUpUserDTO {
   })
   @MinLength(6, {
     message: 'A confirmação de senha deve ter no mínimo 6 caracteres',
+  })
+  @ApiProperty({
+    example: '123456',
   })
   passwordConfirmation: string;
 }

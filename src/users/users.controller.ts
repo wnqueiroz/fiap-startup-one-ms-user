@@ -19,28 +19,50 @@ import { GetCurrentUser } from '../auth/auth.annotation';
 import { CurrentUserDTO } from '../auth/dto/current-user.dto';
 
 import { UsersService } from './users.service';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('users')
 @Controller('/v1/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @Get('me')
-  getProfile(@GetCurrentUser() user: CurrentUserDTO): CurrentUserDTO {
-    return user;
+  @Post('signup')
+  @UseInterceptors(ClassSerializerInterceptor)
+  @ApiOperation({ summary: 'Register a new user' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully created.',
+    type: UserDTO,
+  })
+  async signUp(@Body() signUpUserDTO: SingUpUserDTO): Promise<UserDTO> {
+    return this.usersService.signUp(signUpUserDTO);
   }
 
   @Post('signin')
   @HttpCode(200)
+  @ApiOperation({ summary: 'Perform user login' })
+  @ApiOkResponse({
+    description: 'The operation was successfully performed.',
+    type: LoggedUserDTO,
+  })
   async signIn(@Body() signInUserDTO: SingInUserDTO): Promise<LoggedUserDTO> {
     return this.usersService.signIn(signInUserDTO);
   }
 
-  @Post('signup')
-  @UseInterceptors(ClassSerializerInterceptor)
-  async signUp(@Body() signUpUserDTO: SingUpUserDTO): Promise<UserDTO> {
-    return this.usersService.signUp(signUpUserDTO);
+  @UseGuards(JwtAuthGuard)
+  @Get('me')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: `Get summary details of the user's token` })
+  @ApiOkResponse({
+    description: 'The operation was successfully performed.',
+    type: CurrentUserDTO,
+  })
+  getProfile(@GetCurrentUser() user: CurrentUserDTO): CurrentUserDTO {
+    return user;
   }
 }
