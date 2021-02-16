@@ -34,7 +34,7 @@ async function initServer(app: INestApplication) {
 
   const { port } = configService.get('app');
 
-  const logger = new Logger('NestApplication');
+  const logger = new Logger('NestApplication!');
 
   await app.startAllMicroservicesAsync();
 
