@@ -1,6 +1,6 @@
 # fiap-startup-one-ms-user
 
-![CI/CD](https://github.com/wnqueiroz/fiap-startup-one-ms-user/workflows/CI/CD/badge.svg) [![codecov](https://codecov.io/gh/wnqueiroz/fiap-startup-one-ms-user/branch/main/graph/badge.svg?token=70iyUaZs2l)](https://codecov.io/gh/wnqueiroz/fiap-startup-one-ms-user)
+![CI/CD](https://github.com/wnqueiroz/fiap-startup-one-ms-user/workflows/CI/CD/badge.svg) [![codecov](https://codecov.io/gh/wnqueiroz/fiap-startup-one-ms-user/branch/main/graph/badge.svg?token=BJUEXQ2E26)](https://codecov.io/gh/wnqueiroz/fiap-startup-one-ms-user)
 
 Microservice to centralize business rules related only to the users
 
