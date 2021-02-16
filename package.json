@@ -1,6 +1,6 @@
 {
   "name": "ms-user",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Microservice to centralize business rules related only to the users",
   "author": {
     "name": "William Queiroz",
