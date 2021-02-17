@@ -88,7 +88,7 @@ export class UsersService {
     };
   }
 
-  private async hashPassword(password: string, salt: string): Promise<string> {
+  async hashPassword(password: string, salt: string): Promise<string> {
     return bcrypt.hash(password, salt);
   }
 
@@ -100,7 +100,7 @@ export class UsersService {
     });
   }
 
-  private findByEmail(email: string): Promise<UserEntity> {
+  findByEmail(email: string): Promise<UserEntity> {
     return this.usersRepository.findOne({
       where: {
         email,
@@ -108,7 +108,7 @@ export class UsersService {
     });
   }
 
-  private create(user: UserEntity): Promise<UserEntity> {
+  create(user: UserEntity): Promise<UserEntity> {
     return this.usersRepository.save(user);
   }
 }
