@@ -88,7 +88,7 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "coverageDirectory": "../coverage",
+    "coverageDirectory": "../test/coverage",
     "collectCoverageFrom": [
       "**/*.ts",
       "!**/*.entity.ts",
