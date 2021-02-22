@@ -6,18 +6,15 @@ import {
   forwardRef,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 
-import * as bcrypt from 'bcrypt';
-
-import { UserDTO } from './dto/user.dto';
+import { AuthService } from '../auth/auth.service';
 import { LoggedUserDTO } from './dto/logged-user.dto';
 import { SingInUserDTO } from './dto/signin-user.dto';
 import { SingUpUserDTO } from './dto/signup-user.dto';
-
+import { UserDTO } from './dto/user.dto';
 import { UserEntity } from './user.entity';
-
-import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class UsersService {

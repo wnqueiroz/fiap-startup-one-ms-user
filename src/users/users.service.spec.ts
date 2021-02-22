@@ -1,14 +1,13 @@
+import { HttpException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
+import { AuthService } from '../auth/auth.service';
+import { SingInUserDTO } from './dto/signin-user.dto';
 import { SingUpUserDTO } from './dto/signup-user.dto';
+import { UserDTO } from './dto/user.dto';
 import { UserEntity } from './user.entity';
 import { UsersService } from './users.service';
-
-import { AuthService } from '../auth/auth.service';
-import { HttpException } from '@nestjs/common';
-import { UserDTO } from './dto/user.dto';
-import { SingInUserDTO } from './dto/signin-user.dto';
 
 jest.mock('bcrypt');
 

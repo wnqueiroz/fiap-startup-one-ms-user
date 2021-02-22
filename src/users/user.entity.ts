@@ -1,3 +1,4 @@
+import * as bcrypt from 'bcrypt';
 import {
   Entity,
   Column,
@@ -6,8 +7,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-
-import * as bcrypt from 'bcrypt';
 
 @Entity({
   name: 'users',

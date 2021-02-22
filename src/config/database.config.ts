@@ -1,6 +1,5 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { registerAs } from '@nestjs/config';
-
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as path from 'path';
 
 export default registerAs(

@@ -2,18 +2,15 @@ import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
+import { AuthService } from '../auth/auth.service';
+import { CurrentUserDTO } from '../auth/dto/current-user.dto';
+import { LoggedUserDTO } from './dto/logged-user.dto';
+import { SingInUserDTO } from './dto/signin-user.dto';
 import { SingUpUserDTO } from './dto/signup-user.dto';
 import { UserDTO } from './dto/user.dto';
 import { UserEntity } from './user.entity';
-
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
-
-import { AuthService } from '../auth/auth.service';
-import { SingInUserDTO } from './dto/signin-user.dto';
-import { LoggedUserDTO } from './dto/logged-user.dto';
-
-import { CurrentUserDTO } from '../auth/dto/current-user.dto';
 
 describe('UsersController', () => {
   let usersController: UsersController;

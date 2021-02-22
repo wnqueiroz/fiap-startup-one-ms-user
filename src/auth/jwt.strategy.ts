@@ -1,13 +1,12 @@
-import { ExtractJwt, Strategy } from 'passport-jwt';
-import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-
-import { CurrentUserDTO } from './dto/current-user.dto';
-import { JwtPayloadDTO } from './dto/jwt-payload.dto';
+import { PassportStrategy } from '@nestjs/passport';
+import { ExtractJwt, Strategy } from 'passport-jwt';
 
 import appConfig from '../config/app.config';
 import { AuthService } from './auth.service';
+import { CurrentUserDTO } from './dto/current-user.dto';
+import { JwtPayloadDTO } from './dto/jwt-payload.dto';
 
 ConfigModule.forRoot({
   load: [appConfig],

@@ -8,17 +8,6 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-
-import { UserDTO } from './dto/user.dto';
-import { LoggedUserDTO } from './dto/logged-user.dto';
-import { SingInUserDTO } from './dto/signin-user.dto';
-import { SingUpUserDTO } from './dto/signup-user.dto';
-
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { GetCurrentUser } from '../auth/auth.annotation';
-import { CurrentUserDTO } from '../auth/dto/current-user.dto';
-
-import { UsersService } from './users.service';
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
@@ -26,6 +15,15 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
+
+import { GetCurrentUser } from '../auth/auth.annotation';
+import { CurrentUserDTO } from '../auth/dto/current-user.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { LoggedUserDTO } from './dto/logged-user.dto';
+import { SingInUserDTO } from './dto/signin-user.dto';
+import { SingUpUserDTO } from './dto/signup-user.dto';
+import { UserDTO } from './dto/user.dto';
+import { UsersService } from './users.service';
 
 @ApiTags('users')
 @Controller('/v1/users')
