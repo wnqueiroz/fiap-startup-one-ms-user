@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 
 import { AuthService } from '../auth/auth.service';
 import { CurrentUserDTO } from '../auth/dto/current-user.dto';
+import { KAFKA_CLIENTS } from '../contants';
 import { LoggedUserDTO } from './dto/logged-user.dto';
 import { SingInUserDTO } from './dto/signin-user.dto';
 import { SingUpUserDTO } from './dto/signup-user.dto';
@@ -26,7 +27,15 @@ describe('UsersController', () => {
 
   const mockAuthService = {};
 
+  const mockToPromiseClientKafka = jest.fn(async () => null);
+  const mockToEmitClientKafka = jest.fn(() => ({
+    toPromise: mockToPromiseClientKafka,
+  }));
+
   beforeEach(async () => {
+    const MockClientKafka = {
+      emit: mockToEmitClientKafka,
+    };
     const moduleRef = await Test.createTestingModule({
       providers: [
         UsersService,
@@ -37,6 +46,10 @@ describe('UsersController', () => {
         {
           provide: getRepositoryToken(UserEntity),
           useClass: Repository,
+        },
+        {
+          provide: KAFKA_CLIENTS.SERVICES_SERVICE,
+          useFactory: () => MockClientKafka,
         },
       ],
       controllers: [UsersController],

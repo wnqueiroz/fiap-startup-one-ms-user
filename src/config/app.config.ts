@@ -2,6 +2,10 @@ import { registerAs } from '@nestjs/config';
 
 export default registerAs('app', () => ({
   port: parseInt(process.env.PORT, 10) || 80,
+  kafka: {
+    host: process.env.KAFKA_HOST,
+    port: process.env.KAFKA_PORT,
+  },
   jwt: {
     publicKey: process.env.JWT_PUBLIC_KEY.replace(/\\n/gm, '\n'),
     privateKey: process.env.JWT_PRIVATE_KEY.replace(/\\n/gm, '\n'),
