@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/wnqueiroz/fiap-startup-one-ms-user/compare/1.0.3...1.1.0) (2021-04-12)
+
+
+### Funcionalidades
+
+* send message to user created topic ([aee8641](https://github.com/wnqueiroz/fiap-startup-one-ms-user/commit/aee8641efab11ad95daada1a57c2e2ddb37a9638))
+
 ### [1.0.3](https://github.com/wnqueiroz/fiap-startup-one-ms-user/compare/1.0.2...1.0.3) (2021-02-22)
 
 ### [1.0.2](https://github.com/wnqueiroz/fiap-startup-one-ms-user/compare/1.0.1...1.0.2) (2021-02-22)
